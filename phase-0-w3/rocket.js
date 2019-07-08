@@ -39,7 +39,30 @@
 */
 
 function pyramidNumberExtension(max) {
-  // code here
+  var tmp= '';
+  
+  if (max <= 0) {
+    console.log('max harus berisi angka bilangan positif lebih besar dari 0');
+    process.exit(-1); // Stop program di nodejs
+  }
+
+  for (let i = max; i >= 1; i--) {
+    
+    for (let j = 0; j < i; j++) {
+      tmp += i;
+    }
+    console.log(tmp);
+    tmp = '';
+  }
+
+  for (let i = 2; i <= max; i++) {
+    for (let j = 0; j < i; j++) {
+      tmp += i;
+    }
+
+    console.log(tmp);
+    tmp = '';
+  }
 }
 
 // TEST CASES
@@ -59,30 +82,3 @@ pyramidNumberExtension(1);
 /*
   1
 */
-
-var max = 5; // silahkan beri nilai bebas
-var tmp= '';
-// code here
-
-if (max <= 0) {
-  console.log('max harus berisi angka bilangan positif lebih besar dari 0');
-  process.exit(-1); // Stop program di nodejs
-}
-
-for (let i = max; i >= 1; i--) {
-  
-  for (let j = 0; j < i; j++) {
-    tmp += i;
-  }
-  console.log(tmp);
-  tmp = '';
-}
-
-for (let i = 2; i <= max; i++) {
-  for (let j = 0; j < i; j++) {
-    tmp += i;
-  }
-
-  console.log(tmp);
-  tmp = '';
-}
