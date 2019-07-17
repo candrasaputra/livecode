@@ -47,16 +47,16 @@ function printBranch(branches) {
   let eachMonth = '';
 
   for (let i = 0; i < month.length; i++) {
-    let strEachMont = '| '+month[i]+' | ';
+    let strEachMonth = '| '+month[i]+' | ';
 
-    let brancheNo = 1;
+    let branchNo = 1;
     for (let j = 0; j < branches.length; j++) {
-      strEachMont += ' Branch-'+brancheNo+' IN: '+branches[j][0][i]+' | OUT: '+branches[j][1][i]+' |';
+      strEachMonth += ' Branch-'+branchNo+' IN: '+branches[j][0][i]+' | OUT: '+branches[j][1][i]+' |';
 
-      brancheNo++;
+      branchNo++;
     }
 
-    eachMonth += strEachMont+'\n';
+    eachMonth += strEachMonth+'\n';
   }
 
   return eachMonth;
