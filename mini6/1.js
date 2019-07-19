@@ -43,7 +43,7 @@ function fearFactorFunc(factor, weakAgainsts) {
   for (let i = 0; i < weakAgainsts.length; i++) {
     if (weakAgainsts[i] === factor) {
       console.log('Dia kalah karena kelemahan yang '+numberString[i]);
-      break;
+      return;
     }
   }
 

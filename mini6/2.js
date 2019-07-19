@@ -41,7 +41,7 @@ function mazeRunner(people, solves) {
     }
   }
 
-  return winner;
+  return (winner.length === 0) ? 'Tidak ada pemenangnya': winner;
 };
 
 // TEST CASES
