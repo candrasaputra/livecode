@@ -27,6 +27,9 @@ o o
 
 */
 
+/*
+SOLUTION 1
+
 function standBackTriangel(width) {
   
   let titik = width - 1;
@@ -60,7 +63,27 @@ function standBackTriangel(width) {
   }
      
 }
- 
+*/
+ // SOLUTION 2 :
+function standBackTriangel(width) {
+
+  for (var i = 0; i < (width*2)-1; i++) {
+    var string = "";
+
+    for (var j = 0; j < width; j++) {
+      if ( (width-1) - i === j ) {
+        string = string + "o";
+      } else if ( (i-width)+1 === j ) {
+        string = string + "o";
+      } else if ( j === (width-1) ) {
+        string = string + "o";
+      } else {
+        string = string + " ";
+      }
+    }
+    console.log(string);
+  }
+
  standBackTriangel( 3 )
  standBackTriangel( 5 )
  
