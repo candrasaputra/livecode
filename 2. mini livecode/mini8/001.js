@@ -101,7 +101,7 @@ STORE FUNCTION getGolongan with prameter brutoSalary NUMBER
         SET tax with 0
         bpjs with 2
     ELSE
-         false
+        false
     END IF
 END FUNCTION
 
@@ -110,6 +110,8 @@ END FUNCTION
 function salaryRangeCalculator(brutoSalary, months) {
     let salaryNett, totalBPJS;
     let golongan = getGolongan(brutoSalary);
+
+    if (golongan === false) return "Gaji anda dibawah standard perusahaan";
 
     let tax = (golongan.tax / 100);
     let bpjs = (golongan.bpjs / 100);

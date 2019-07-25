@@ -23,7 +23,6 @@
 function rangePrimeNumber(start, finish) {
     let newArr = [];
     let getPrima = generetPrime(finish);
-    console.log(getPrima);
     for (let i = 0; i < getPrima.length; i++) {
         if (i >= start - 1 && i < finish) {
             newArr.push(getPrima[i]);
