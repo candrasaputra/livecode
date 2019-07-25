@@ -29,30 +29,20 @@
 function secondSmallestNumberExtra(array) {
   if (array.length === 0) return 'No number';
 
-  let smallest = array[0][0][0];
-  let smallestExtra = array[0][0][0];
+  let newArr = [];
 
   for (let i = 0; i < array.length; i++) {
     for (let j = 0; j < array[i].length; j++) {
       for (let k = 0; k < array[i][j].length; k++) {
-        if (array[i][j][k] < smallest) {
-          smallest = array[i][j][k];
-        }
+        newArr.push(array[i][j][k]);
       }
     }
   }
 
-  for (let i = 0; i < array.length; i++) {
-    for (let j = 0; j < array[i].length; j++) {
-      for (let k = 0; k < array[i][j].length; k++) {
-        if (array[i][j][k] > smallest && array[i][j][k] <= smallestExtra) {
-          smallestExtra = array[i][j][k];
-        }
-      }
-    }
-  }
-
-  return smallestExtra;
+  let unique = [...new Set(newArr.sort(function (a, b) {
+    return a - b
+  }))];
+  return (unique.length === 1) ? 'No number' : unique[1];
 }
 
 //TEST CASE
