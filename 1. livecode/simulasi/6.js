@@ -37,10 +37,6 @@ function parseNumber(equation) {
   }
 }
 
-function genZero(num) {
-
-}
-
 // function parseNumber(equation) {
 //   equationString = String(equation);
 
