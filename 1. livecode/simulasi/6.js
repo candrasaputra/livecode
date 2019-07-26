@@ -13,52 +13,55 @@
 */
 
 function parseNumber(equation) {
-  equationString = String(equation);
+  let equationToString = String(equation);
 
-  let index = -1;
-  let flagIndex = true;
-  let banyakPlus = 0;
-  for (let i = 0; i < equationString.length; i++) {
+  let genZero = '';
 
-    if (flagIndex && equationString[i] != '0') {
-      index = i
-      flagIndex = false
-    }
-
-    if (equationString[i] == '0') {
-      flagIndex = true;
-    }
-
-    if (equationString[i] == '+') {
-      index = -1;
-      flagIndex = true;
-      banyakPlus++;
-    }
+  for (let i = 0; i < Number(equationToString.length - 1); i++) {
+    genZero += '0';
   }
 
-  let banyak = (equationString.length - 1) - index;
+  let first = Number(equationToString[0]) + genZero;
+  let plus = '';
 
-  // Base Case
-  if (equationString[equationString.length - 1] == '0' || index === equationString.length - 1) {
-    return equationString;
+  if (equationToString.length !== 1) {
+    plus = '+';
+  }
+
+  if (equationToString.length === 0 || Number(first) === 0) {
+    return ''
+  } else if (Number(equationToString.substring(1)) === 0) {
+    return String(first)
   } else {
-    let kiri = equationString.slice(0, index);
-    let kanan = equationString.slice(index, equationString.length - 1);
-    return parseNumber(kiri + equationString[index] + makeZero(banyak) + kanan);
+    return first + plus + parseNumber(Number(equationToString.substring(1)))
   }
 }
 
-function makeZero(num) {
-  let string = '';
-  num = Number(num);
+function genZero(num) {
 
-  for (let i = 0; i < num; i++) {
-    string += '0';
-  }
-
-  return string;
 }
+
+// function parseNumber(equation) {
+//   equationString = String(equation);
+
+//   let panjang = equationString.length - 1;
+//   panjang = String(panjang)
+
+//   let first = Number(equationString[0]) * Math.pow(10, Number(equationString.length - 1));
+//   first = (first === 0) ? '' : String(first);
+//   if (equationString.length === 0) {
+//     return '';
+//   } else {
+//     let str = '';
+
+//     let plus = '+'
+
+//     return first + '+' + parseNumber(equationString.substring(1))
+//   }
+// }
 
 console.log(parseNumber(3333)) // 3000+300+30+3
 console.log(parseNumber(90)) // 90
 console.log(parseNumber(2333)) // 2000+300+30+3
+console.log(parseNumber(505)) // 500+5
+console.log(parseNumber(50000000000000000000)) // 500000
