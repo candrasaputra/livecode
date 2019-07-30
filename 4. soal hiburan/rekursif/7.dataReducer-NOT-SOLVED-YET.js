@@ -25,7 +25,13 @@ function dataReducer(data) {
     return ''
   } else {
     if (data[0].charCodeAt() + 1 != data[1].charCodeAt()) {
-      return data[1] + dataReducer(data[0] + data.substring(2, data.length));
+      let newData = data[0] + data.substring(2, data.length);
+      let reducer = dataReducer(newData)
+
+      if (reducer && newData.length > 0) {
+        return data[1] + ',' + dataReducer(newData);
+      }
+      return data[1] + dataReducer(newData);
     } else {
       return dataReducer(data.substring(1, data.length));
     }
