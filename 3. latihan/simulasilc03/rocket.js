@@ -53,37 +53,62 @@ Yang penting adalah kita mendapatkan district berapa yang menjadi target!
 function nextTargetArea(code) {
   let alfa = ['TWO', 'THREE', 'FOUR', 'SIX', 'SEVEN', 'EIGHT'];
   let num = [2, 3, 4, 6, 7, 8];
+  newCode = code.split('');
 
-  let codeArr = stringToArr(code);
+  let alfaNum = [];
 
-  let removeIndex = [];
-  let bookingIndex = [];
-  let bookingString = '';
+  let tmp = '';
+  while (newCode.length > 0) {
+    for (let i = 0; i < alfa.length; i++) {
 
-  for (let i = 0; i < codeArr.length; i++) {
+      for (let j = 0; j < alfa[i].length; j++) {
+        let cek = alfa[i][j];
 
+        for (let k = 0; k < newCode.length; k++) {
+          if (newCode[k] === cek) {
+            tmp += newCode[k];
+            newCode = removeByIndex(newCode, k);
+            break;
+          }
+        }
+      }
+
+      if (tmp === alfa[i]) {
+        alfaNum.push(tmp);
+        tmp = '';
+      } else {
+        newCode.push(...tmp.split(''));
+        tmp = '';
+      }
+    }
   }
 
+  let total = 0;
+  for (let i = 0; i < alfaNum.length; i++) {
+    for (let j = 0; j < alfa.length; j++) {
+      if (alfaNum[i] === alfa[j]) {
+        total += num[j];
+        break;
+      }
+    }
+  }
 
-  return stringToArr(code);
+  return `District ${total} is the next target!`
 }
 
-function removeIndex(array1, array2) {
-
-}
-
-function stringToArr(code) {
+function removeByIndex(array, remove) {
   let result = [];
-
-  for (let i = 0; i < code.length; i++) {
-    result.push(code[i]);
+  for (let i = 0; i < array.length; i++) {
+    if (i != remove) {
+      result.push(array[i]);
+    }
   }
 
   return result;
 }
 
 console.log(nextTargetArea('WTO')); // "District 2 is the next target!"
-// console.log(nextTargetArea('WTWTHROETEO')); // "District 7 is the next target!"
-// console.log(nextTargetArea('HSEVTEEING')); // "District 15 is the next target!"
-// console.log(nextTargetArea('FNEXSIVUSEOR')); // "District 17 is the next target!"
-// console.log(nextTargetArea('EFNEXRSIVHUSEORTE')); // "District 20 is the next target!"
+console.log(nextTargetArea('WTWTHROETEO')); // "District 7 is the next target!"
+console.log(nextTargetArea('HSEVTEEING')); // "District 15 is the next target!"
+console.log(nextTargetArea('FNEXSIVUSEOR')); // "District 17 is the next target!"
+console.log(nextTargetArea('EFNEXRSIVHUSEORTE')); // "District 20 is the next target!"
