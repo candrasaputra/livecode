@@ -12,7 +12,27 @@ WAJIB menggunakan metode rekursif!
 */
 
 function operationEvaluator(operation) {
-  // only code here...
+  if (
+    typeof operation.left === "number" &&
+    typeof operation.right === "object"
+  ) {
+    return eval(operation.left + operation.op + "(" + operationEvaluator(operation.right) + ")");
+  } else if (
+    typeof operation.left === "object" &&
+    typeof operation.right === "number"
+  ) {
+    return eval("(" + operationEvaluator(operation.left) + ")" + operation.op + operation.right);
+  } else if (
+    typeof operation.left === "object" &&
+    typeof operation.right === "object"
+  ) {
+    return eval("(" + operationEvaluator(operation.left) + ")" + operation.op + "(" + operationEvaluator(operation.right) + ")");
+  } else if (
+    typeof operation.left === "number" &&
+    typeof operation.right === "number"
+  ) {
+    return eval(operation.left + operation.op + operation.right);
+  }
 }
 
 
