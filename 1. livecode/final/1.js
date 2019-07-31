@@ -115,15 +115,10 @@ function heroPick(composition) {
 
 
   for (let k in obj) {
-    let validHero = false;
     for (let i = 0; i < listHerro.length; i++) {
-      if (k === listHerro[i]) {
-        validHero = true;
+      if (notInArray(listHerro, k) === false) {
+        return k + ' is not on the pick list'
       }
-    }
-
-    if (validHero === false) {
-      return 'god is not on the pick list'
     }
 
     if (obj[k] > 2) {
@@ -141,6 +136,19 @@ function heroPick(composition) {
     return 'bad pick too many ' + badHero;
   }
 }
+
+function notInArray(array, key) {
+  let status = false;
+  for (let i = 0; i < array.length; i++) {
+    if (array[i] === key) {
+      status = true;
+      break;
+    }
+  }
+
+  return status;
+}
+
 // Test case
 console.log(heroPick('ranger,ranger,mage,tank,warrior')) // good pick
 console.log(heroPick('mage,mage,tank,mage,warrior')) // bad pick too many mage

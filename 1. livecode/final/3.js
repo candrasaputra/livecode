@@ -46,7 +46,7 @@ OUTPUT: simbol # ditempatkan pada posisi indeks (5,5)
 */
 
 function findEmptySeat(room) {
-  let indexJalur = (room[0].length - 1) / 2;
+  let indexJalur = Math.floor((room[0].length - 1) / 2);
   let posi = -1
   let posj = -1
 
