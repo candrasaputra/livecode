@@ -115,10 +115,8 @@ function heroPick(composition) {
 
 
   for (let k in obj) {
-    for (let i = 0; i < listHerro.length; i++) {
-      if (notInArray(listHerro, k) === false) {
-        return k + ' is not on the pick list'
-      }
+    if (notInArray(listHerro, k) === false) {
+      return k + ' is not on the pick list'
     }
 
     if (obj[k] > 2) {
