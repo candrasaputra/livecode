@@ -70,7 +70,11 @@ function train(pokemon, candy) {
     }
   }
 
-  return `Congratulations, your ${oldName} grew to LV. ${pokemon.level}! And it evolved into ${sambungArr(evoList)}!`
+  if (evoList.length === 0) {
+    return `Congratulations, your ${oldName} grew to LV. ${pokemon.level}!`
+  } else {
+    return `Congratulations, your ${oldName} grew to LV. ${pokemon.level}! And it evolved into ${sambungArr(evoList)}!`
+  }
 }
 
 function sambungArr(arr) {
