@@ -10,8 +10,6 @@
   1. Tidak boleh menggunakan built in function selain .push() dan .unshift()
 */
 
-/*
-SOLUSI JIKA DIURUTKAN BERDASARKAN ANGKA LEBIH DARI 1 DIGIT.
 function order(words) {
   let split = mySplit(words);
   let isOrdered = true;
@@ -27,52 +25,19 @@ function order(words) {
         if (!isNaN(split[i][j])) {
           angkaSaatIni += split[i][j];
         }
+
+        if (split[i][j] === '-') {
+          angkaSaatIni += split[i][j];
+        }
       }
 
       for (let j = 0; j < split[i + 1].length; j++) {
         if (!isNaN(split[i + 1][j])) {
           angkaBerikut += split[i + 1][j];
         }
-      }
 
-      if (Number(angkaSaatIni) > Number(angkaBerikut)) {
-        let sementara = split[i];
-        split[i] = split[i + 1]
-        split[i + 1] = sementara
-
-        isOrdered = true;
-      }
-      angkaSaatIni = '',
-        angkaBerikut = '';
-    }
-  }
-
-  return myJoin(split)
-}
-*/
-
-function order(words) {
-  let split = mySplit(words);
-  let isOrdered = true;
-  if (split.length === 0) return '';
-
-  while (isOrdered) {
-    isOrdered = false;
-
-    let angkaSaatIni = '';
-    let angkaBerikut = '';
-    for (let i = 0; i < split.length - 1; i++) {
-      for (let j = 0; j < split[i].length; j++) {
-        if (!isNaN(split[i][j])) {
-          angkaSaatIni = split[i][j];
-          break;
-        }
-      }
-
-      for (let j = 0; j < split[i + 1].length; j++) {
-        if (!isNaN(split[i + 1][j])) {
-          angkaBerikut = split[i + 1][j];
-          break;
+        if (split[i + 1][j] === '-') {
+          angkaBerikut += split[i + 1][j];
         }
       }
 
