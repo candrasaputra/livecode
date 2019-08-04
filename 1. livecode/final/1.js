@@ -114,9 +114,10 @@ function heroPick(composition) {
   }
 
 
+  let invalidHeroes = [];
   for (let k in obj) {
     if (notInArray(listHerro, k) === false) {
-      return k + ' is not on the pick list'
+      invalidHeroes.push(k);
     }
 
     if (obj[k] > 2) {
@@ -128,6 +129,11 @@ function heroPick(composition) {
   if (totalPlayer != 5) {
     return 'not sufficient players';
   }
+
+  if (invalidHeroes.length > 0) {
+    return sambungArr(invalidHeroes) + ' is not on the pick list'
+  }
+
   if (good) {
     return 'good pick'
   } else {
@@ -145,6 +151,27 @@ function notInArray(array, key) {
   }
 
   return status;
+}
+
+function sambungArr(arr) {
+  let result = '';
+  if (arr.length === 1) {
+    result += arr[0]
+  } else if (arr.length === 2) {
+    result += arr[0] + ' and ' + arr[1]
+  } else {
+    for (let i = 0; i < arr.length; i++) {
+      result += arr[i];
+
+      if (i == arr.length - 2) {
+        result += ' and '
+      } else if (i != arr.length - 1) {
+        result += ', ';
+      }
+    }
+  }
+
+  return result;
 }
 
 // Test case
